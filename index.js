@@ -132,9 +132,26 @@ const car1 = new Car({
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
 
+function Baby(attributes) {
+  Person.call(this, attributes);
+  this.favoriteToy = attributes.favoriteToy;
+  this.name = attributes.name;
 }
+
+Baby.prototype.play = function () {
+  return `${baby1.name} likes to play with ${baby1.favoriteToy}s`;
+};
+
+const baby1 = new Baby({
+  name: "Junior",
+  age: 2,
+  stomach: [],
+  food: "milk",
+  favoriteToy: "guitar"
+});
+
+console.log(baby1.play());
 
 /* 
   TASK 4
