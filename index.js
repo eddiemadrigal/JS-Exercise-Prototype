@@ -67,6 +67,59 @@ const p1 = new Person({
 
 // console.log(`${p1.name} likes to eat ${p1.food}`);
 
+// Class (optional)
+
+class User {
+
+  constructor(attributes) { // the function that acutally constructs or creates our objects
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.stomach = attributes.stomach;
+    this.food = attributes.food;      
+  }
+
+  eat() {
+    this.stomach.push(this.food);
+    if (this.stomach.length >= 10) {
+      this.stomach.length = 0;
+    }
+    return `${this.name} likes ${this.food}`;
+  };
+
+  toString() {
+    return `${this.name} is logged in.`
+  }
+}
+
+class Admin extends User {
+  deleteUser(user) {
+      users = users.filter( u => {
+          return u.name != user.name
+      })
+  }
+}
+
+const user1 = new Person({
+  name: "Abbot",
+  age: 46,
+  stomach: [],
+  food: "hamburgers"
+});
+
+const user2 = new Person({
+  name: "Bob",
+  age: 32,
+  stomach: [],
+  food: "pizza"
+});
+
+let admin = new Admin('Cisco');
+
+let users = [user1, user2];
+console.log(users);
+admin.deleteUser(user1);
+console.log(users);
+
 /*
   TASK 2
     - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
