@@ -157,10 +157,10 @@ console.log(baby1.play());
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. 'this' word is a pronoun to use in place of the object it's relating to
+  2. The keyword relates to where and when the function is called
+  3. 'this' keyword gives an object's context
+  4. 'this' is bound to a specific instance 
 */
 
 
