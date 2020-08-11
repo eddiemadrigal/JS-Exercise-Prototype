@@ -81,9 +81,49 @@ const p1 = new Person({
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(attributes) {
+  this.model = attributes.model;
+  this.mpg = attributes.milesPerGallon;
+  this.odometer = attributes.odometer;
 }
+
+Car.prototype.fill = function (gallons) {
+  this.tank = gallons;
+  return `At fillup, the amount of gas available is ${this.tank}`;
+};
+
+Car.prototype.drive = function (distance) {
+  this.distance = distance;
+  this.odometer += distance;
+  this.gallonsUsed = distance / this.mpg;
+  this.tank -= this.gallonsUsed;
+  if (this.tank === 0) {
+    console.log(`You ran out of gas at odometer reading of ${this.odometer}`);
+  }
+};
+
+Car.prototype.getStatus = function () {
+  return `The car was driven ${this.distance}, used ${
+    this.gallonsUsed
+  } gallons and has ${this.tank} gallons left.`;
+};
+
+const car1 = new Car({
+  model: "Volvo",
+  milesPerGallon: 16,
+  tank: 0,
+  odometer: 0,
+  distance: 0,
+  gallons: 0
+});
+
+// console.log(car1.fill(10));
+// car1.drive(160);
+// console.log(car1.getStatus());
+// console.log(car1.fill(10));
+// car1.drive(160);
+// console.log(car1.getStatus());
+
 
 /*
   TASK 3
